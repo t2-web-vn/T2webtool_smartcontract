@@ -22,12 +22,6 @@
     "deploy-nft": "npx hardhat run scripts/deploy-nft.js",
     "disperse": "npx hardhat run scripts/disperse.js",
     "mint-nft": "npx hardhat run scripts/mint-nft.js",
-    "mint-nft:goerli": "npx hardhat run --network goerli scripts/mint-nft.js",
-    "mint-nft:mumbai": "npx hardhat run --network mumbai scripts/mint-nft.js",
-    "mint-nft:bsc": "npx hardhat run --network bsc scripts/mint-nft.js",
-    "mint-nft:shibuya": "npx hardhat run --network shibuya scripts/mint-nft.js",
-    "mint-nft:sandverse": "npx hardhat run --network sandverse scripts/mint-nft.js",
-    "mint-nft:defiverse": "npx hardhat run --network defiverse scripts/mint-nft.js",
     "test": "npx hardhat test"
   },
   "repository": {

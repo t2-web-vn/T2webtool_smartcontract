@@ -35,32 +35,42 @@ module.exports = {
     hardhat: {
       gasPrice: 875000000,
     },
-    // mumbai: {
-    //   url: process.env.MUMBAI_NODE_URL || "https://rpc-mumbai.matic.today",
-    //   accounts:
-    //     process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-    // },
-    // polygon: {
-    //   url: process.env.RPC_POLYGON_URL || "https://polygon-rpc.com",
-    //   gasPrice: 45000000000,
-    //   accounts:
-    //     process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-    // },
-    // bsc: {
-    //   url: process.env.BSC_NODE_URL,
-    //   accounts:
-    //     process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-    // },
-    // shibuya: {
-    //   url: process.env.ASTAR_NODE_URL,
-    //   accounts:
-    //     process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-    // },
-    // goerli: {
-    //   url: process.env.GOERLI_NODE_URL,
-    //   accounts:
-    //     process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-    // },
+    ethereum: {
+      url: process.env.ETHEREUM_NODE_URL || "",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    polygon: {
+      url: process.env.POLYGON_NODE_URL || "https://polygon-rpc.com",
+      gasPrice: 45000000000,
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    oasys: {
+      url: process.env.OASYS_NODE_URL || "https://rpc.oasys.games/",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    bsc: {
+      url: process.env.BSC_NODE_URL,
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    bsc_testnet: {
+      url: process.env.BSC_TESTNET_NODE_URL,
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    shibuya: {
+      url: process.env.ASTAR_SHIBUYA_NODE_URL,
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    astar: {
+      url: process.env.ASTAR_NODE_URL,
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
     sandverse: {
       url: process.env.SAND_VERSE_NODE_URL,
       accounts:
@@ -76,11 +86,16 @@ module.exports = {
       url: "https://rpc.defi-verse.org/",
       accounts: [process.env.PRIVATE_KEY],
     },
-    amoy: {
-      url: "https://polygon-amoy.infura.io/v3/e303991ca58e45a1b44c8d5eee3634cd/",
+    defiverse_testnet: {
+      // url: "https://rpc-testnet.defi-verse.org/",
+      url: process.env.DEFIVERSE_TESTNET_NODE_URL,
       accounts: [process.env.PRIVATE_KEY],
     },
-    'oasys-testnet': {
+    amoy: {
+      url: process.env.AMOY_NODE_URL,
+      accounts: [process.env.PRIVATE_KEY],
+    },
+    oasys_testnet: {
       url: process.env.OASYS_TESTNET_NODE_URL,
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
