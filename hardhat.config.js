@@ -61,11 +61,11 @@ module.exports = {
     //   accounts:
     //     process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     // },
-    // sandverse: {
-    //   url: process.env.SAND_VERSE_NODE_URL,
-    //   accounts:
-    //     process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-    // },
+    sandverse: {
+      url: process.env.SAND_VERSE_NODE_URL,
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
     // mchverse: {
     //   url: process.env.MCH_VERSE_NODE_URL,
     //   accounts:
@@ -76,6 +76,15 @@ module.exports = {
       url: "https://rpc.defi-verse.org/",
       accounts: [process.env.PRIVATE_KEY],
     },
+    amoy: {
+      url: "https://polygon-amoy.infura.io/v3/e303991ca58e45a1b44c8d5eee3634cd/",
+      accounts: [process.env.PRIVATE_KEY],
+    },
+    'oasys-testnet': {
+      url: process.env.OASYS_TESTNET_NODE_URL,
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
@@ -85,7 +94,7 @@ module.exports = {
     apiKey: {
       "defiverse": "no key",
     },
-    customChains: [      
+    customChains: [
       {
         network: "defiverse",
         chainId: 16116,
