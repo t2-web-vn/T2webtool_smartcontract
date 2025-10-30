@@ -19,6 +19,7 @@
 */
 
 const hre = require("hardhat");
+const readline = require('readline');
 
 async function main() {
     // Accept positional args (after `--` when using `npx hardhat run`):
@@ -26,8 +27,26 @@ async function main() {
     // `npx hardhat run -- <args>` places args after a `--` token; find first non-flag arg
     const posArgs = rawArgs.filter(a => !a.startsWith("--"));
 
-    const proxyAdminAddress = posArgs[0] || process.env.PROXY_ADMIN_ADDRESS;
-    const newOwnerAddress = posArgs[1] || process.env.NEW_OWNER_ADDRESS;
+    let proxyAdminAddress = posArgs[0] || process.env.PROXY_ADMIN_ADDRESS;
+    let newOwnerAddress = posArgs[1] || process.env.NEW_OWNER_ADDRESS;
+
+    // If addresses weren't provided via args or env, prompt interactively
+    if (!proxyAdminAddress || !newOwnerAddress) {
+        const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+        const question = (q) => new Promise(resolve => rl.question(q, ans => resolve(ans.trim())));
+
+        while (!proxyAdminAddress) {
+            const answer = await question('Enter proxy admin contract address: ');
+            if (answer) proxyAdminAddress = answer;
+        }
+
+        while (!newOwnerAddress) {
+            const answer = await question('Enter new owner address: ');
+            if (answer) newOwnerAddress = answer;
+        }
+
+        rl.close();
+    }
 
     if (!proxyAdminAddress || !newOwnerAddress) {
         console.error("Usage: npx hardhat run scripts/transfer-proxy-admin-ownership.js --network <network> -- <proxyAdminAddress> <newOwnerAddress>");
@@ -216,6 +235,20 @@ async function main() {
 
     if (currentOwner.toLowerCase() === newOwnerAddress.toLowerCase()) {
         console.log("New owner is the same as current owner — nothing to do.");
+        return;
+    }
+
+    // Ask for confirmation before sending the transaction
+    const rlConfirm = readline.createInterface({ input: process.stdin, output: process.stdout });
+    const confirm = await new Promise(resolve => {
+        rlConfirm.question(`Proceed to transfer ownership from ${currentOwner} to ${newOwnerAddress}? (y/N): `, ans => {
+            rlConfirm.close();
+            resolve(ans.trim().toLowerCase() === 'y');
+        });
+    });
+
+    if (!confirm) {
+        console.log('Aborted by user. No transaction was sent.');
         return;
     }
 
