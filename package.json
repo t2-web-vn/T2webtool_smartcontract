@@ -22,6 +22,7 @@
     "deploy-nft": "npx hardhat run scripts/deploy-nft.js",
     "disperse": "npx hardhat run scripts/disperse.js",
     "mint-nft": "npx hardhat run scripts/mint-nft.js",
+    "transfer-proxy-admin-ownership": "npx hardhat run scripts/transfer-proxy-admin-ownership.js",
     "test": "npx hardhat test"
   },
   "repository": {
